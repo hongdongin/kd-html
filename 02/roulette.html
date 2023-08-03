@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        td {
+
+            width: 50px;
+            height: 50px;
+            text-align: center;
+            border-radius: 10px;
+            border-color: mediumslateblue;
+            color: #FFFFFF;
+
+        }
+
+        table {
+            border-radius: 5px;
+            border-color: mediumslateblue;
+            
+
+
+        }
+
+        button {
+            width: 100px;
+            height: 30px;
+            border-radius: 10px;
+            background-color: blue;
+            color: #FFFFFF;
+            border: none;
+        }
+
+        body{
+            background-color:black;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="text" id="bet" placeholder="베팅금액" style="border-radius: 15px; border-color: royalblue;">
+    <input type="text" id="num"style="border-radius: 15px;border-color: royalblue;">
+    <button onclick="startRoulette()">행운!</button>
+    <br>
+    <br>
+    <table border="1">
+
+    </table>
+
+
+
+    <script>
+
+        let redIdx = -1;
+        let blueIdx = -1;
+        let greenIdx = -1;
+
+        function startRoulette() {
+            const tds = document.querySelectorAll('td');
+            const interval = setInterval(function () {
+
+                for (let i = 0; i < tds.length; i++) {
+                    tds[i].style = 'background-color:white;';
+                }
+                const redIdx = Math.floor(Math.random() * tds.length);
+                tds[redIdx].style = 'background-color:red;';
+
+                const blueIdx = Math.floor(Math.random() * tds.length);
+                tds[blueIdx].style = 'background-color:blue;';
+                const greenIdx = Math.floor(Math.random() * tds.length);
+                tds[greenIdx].style = 'background-color:green;';
+            }, 200);
+            setTimeout(function () {
+                clearInterval(interval);
+                alert(`빨강번호:${redIdx},파랑번호:${blueIdx}, 녹색번호:${greenIdx}`);
+            }, 3000);
+        }
+        let html = '';
+        let cnt = 1;
+        for (let i = 1; i <= 5; i++) {
+            html += '<tr>';
+            for (let j = 1; j <= 10; j++) {
+                html += '<td>' + (cnt++) + '</td>';
+            }
+            html += '</tr>';
+        }
+        document.querySelector('table').innerHTML = html;
+    </script>
+</body>
+
+</html>
