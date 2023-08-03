@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <form action="">
+        <span>
+         <div class="name">
+                <label for="name">이름</label><br>
+                <input type="text" id="name" placeholder="이름"><br>
+            </div>
+       <div class="id">
+                <label for="id">ID</label><br>
+                <input type="text" id="id" placeholder="아이디"><br>
+            </div>
+            <div class="password">
+                <label for="password">PWD</label><br>
+                <input type="password" id="password" placeholder="패스워드"><br>
+            </div>
+<div class="radio">
+            <label for="m">남자</label>
+            <input type="radio" id="m" name="trans">
+            <label for="f">여자</label>
+            <input type="radio" id="f" name="trans">
+            </div>
+            <br>
+            <div class="phone">
+                <label for="phone">tel</label><br>
+                <input type="phone" id="phone" placeholder="000-0000-0000">
+            </div>
+            <br>
+           <div class="button">
+            <button onclick="button">회원가입</button>
+        </span>
+    </form>
+    <script>
+       
+        function check() {
+            const name = document.querySelector('#name');
+            const id = document.querySelector('#id');
+          //  const pwd = document.querySelector('#pwd');
+            const phone = document.querySelector('#pwd');
+            const pwd = document.querySelector('#pwd');
+
+            if (name.value.trim().length < 3) {
+                alert('이름는 3글자이상입니다.')
+            }
+            if (id.value.trim().length < 4) {
+                alert('아이디는 4글자이상입니다.')
+            }
+            if (pwd.value.trim().length < 4) {
+                alert('패스워드는 4글자이상입니다.')
+            }
+            if (man && woman) {
+                document.getElementById("transError").innerHTML = "성별 체크하시오"
+                check = false
+            } else {
+                document.getElementById("transError").innerHTML = ""
+            }
+            if (phone.value.trim().length!= 11) {
+                alert('폰 번호는 11자리까지')
+            }
+
+            if (check) {
+                document.getElementById("transError").innerHTML = ""
+            }
+        }
+    </script>
+</body>
+
+</html>

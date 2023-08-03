@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      color: #ffffff;
+      text-align: center;
+    }
+
+    body {
+      background-color:green;
+    }
+
+    #timer {
+      width: 300px;
+      height: 50px;
+      border-radius: 40px;
+      border-color:green;
+    
+    }
+
+    button {
+      width: 100px;
+      height: 50px;
+      border-radius: 20px;
+      background-color: aquamarine;
+    }
+
+    #arlam{
+      text-decoration-color: blue;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>
+    <div id="clock"></div>
+  </h1>
+  <br>
+  <div>
+    <input type="text" id="timer" placeholder="알람을 초단위로 입력해주세요.">
+    <button onclick="startTimer(this)">START</button>
+  </div>
+  <br>
+  <div style="display:block">
+    <audio controls src="/bgm/ring.wav" id="arlam" style="text-align: center;"></audio>
+  </div>
+  <script>
+    function displayClock() {
+      const date = new Date();
+      document.querySelector('#clock').innerHTML = date;
+    }
+    setInterval(displayClock, 1000);
+
+
+
+    function startTimer(btn) {
+
+
+
+      if (btn.innerText === 'START') {
+        const timer = parseInt(document.querySelector('#timer').value) * 1000;
+        setTimeout(function () {
+          document.querySelector('#arlam').play();
+          btn.innerText = 'TimeOff';
+        }, timer);
+      } else {
+        document.querySelector('#arlam').pause();
+        document.querySelector('#arlam').currentTime = 0;
+        btn.innerText = 'START';
+      }
+    }
+
+  </script>
+</body>
+
+</html>
